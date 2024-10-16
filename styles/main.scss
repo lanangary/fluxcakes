@@ -29,6 +29,13 @@ $xl : 1440px;
     background-color: $button-primary;
     height: auto;
     width: auto;
+    outline: none;
+    border: none;
+
+    @media screen and (max-width: $md) {
+        padding: 6px 12px;
+
+    }
 
     a {
         padding: 14px 16px;
@@ -127,6 +134,8 @@ body {
     .container {
         padding-top: unset;
         position: relative;
+
+        width: 100%;
     }
 
     &-content {
@@ -159,6 +168,18 @@ body {
         display: flex;
         justify-content: center;
         gap: 24px;
+
+        @media screen and (max-width: $md) {
+            flex-direction: column;
+
+            .default-button {
+                a {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 18px !important;
+                }
+            }
+        }
     }
 
     &-title {
@@ -231,6 +252,11 @@ body {
     overflow: hidden;
     position: relative;
 
+
+    @media screen and (max-width: $md) {
+        margin-top: -10vh;
+    }
+
     .container {
         padding-bottom: 400px;
 
@@ -288,11 +314,15 @@ body {
 
     &-partner {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        ;
         border-top: solid 4px white;
 
         padding-top: 80px;
         margin-top: 80px;
+
+        padding-top: clamp(24px, calc(80 * 100vw / 1400), 80px);
+        margin-top: clamp(24px, calc(80 * 100vw / 1400), 80px);
 
         @media screen and (max-width: $md) {
             flex-wrap: wrap;

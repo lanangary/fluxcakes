@@ -11,6 +11,13 @@
   background-color: #ec8941;
   height: auto;
   width: auto;
+  outline: none;
+  border: none;
+}
+@media screen and (max-width: 768px) {
+  .default-button {
+    padding: 6px 12px;
+  }
 }
 .default-button a {
   padding: 14px 16px;
@@ -93,6 +100,7 @@ body .container {
 .hero .container {
   padding-top: unset;
   position: relative;
+  width: 100%;
 }
 .hero-content {
   position: relative;
@@ -119,6 +127,16 @@ body .container {
   display: flex;
   justify-content: center;
   gap: 24px;
+}
+@media screen and (max-width: 768px) {
+  .hero-button {
+    flex-direction: column;
+  }
+  .hero-button .default-button a {
+    display: flex;
+    justify-content: center;
+    font-size: 18px !important;
+  }
 }
 .hero-title {
   display: flex;
@@ -181,6 +199,11 @@ body .container {
   overflow: hidden;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  .about {
+    margin-top: -10vh;
+  }
+}
 .about .container {
   padding-bottom: 400px;
 }
@@ -233,10 +256,12 @@ body .container {
 }
 .about-partner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-top: solid 4px white;
   padding-top: 80px;
   margin-top: 80px;
+  padding-top: clamp(24px, 5.7142857143vw, 80px);
+  margin-top: clamp(24px, 5.7142857143vw, 80px);
 }
 @media screen and (max-width: 768px) {
   .about-partner {

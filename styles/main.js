@@ -55,4 +55,51 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+
+    // if about-partner already show in the viewport, add the animation class
+
+    const aboutPartner = document.querySelector('.about-partner');
+    if (aboutPartner) {
+
+        const countTitle = document.querySelectorAll('.count-title');
+
+        const checkVisibility = () => {
+            const rect = aboutPartner.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0 && aboutPartner.classList.contains('show') === false) {
+                aboutPartner.classList.add('show');
+
+                // Add animation class to each count title
+                countTitle.forEach((title, index) => {
+                    let countTo = title.getAttribute('data-count');
+                    let counter = 0;
+
+                    const updateCounter = () => {
+                        const increment = Math.ceil(countTo / 100);
+                        counter += increment;
+
+                        if (counter >= countTo) {
+                            counter = countTo;
+                            clearInterval(interval);
+                        }
+
+                        title.textContent = counter + '+';
+                    };
+
+                    const interval = setInterval(updateCounter, 20 * index);
+
+
+                });
+
+            }
+        };
+
+        // Check visibility on scroll
+        window.addEventListener('scroll', checkVisibility);
+
+        // Check visibility on page load
+        checkVisibility();
+    }
+
+
 });
